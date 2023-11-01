@@ -8,7 +8,7 @@ interface QuestionCardProps {
   _id: string;
   title: string;
   tags: {
-    _id: string;
+    _id: string | number;
     name: string;
   }[];
   author: {
