@@ -110,7 +110,7 @@ export interface GetTopInteractedTagsParams {
 }
 
 export interface CreateUserParams {
-  clerkId: string;
+  clerkId: string | number;
   name: string;
   username: string;
   email: string;
