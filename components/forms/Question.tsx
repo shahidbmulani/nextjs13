@@ -163,12 +163,12 @@ const Question = ({ mongoUserId }: Props) => {
                                             menubar: false,
                                             plugins: [
                                                 'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
-                                                'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                                                'anchor', 'searchreplace', 'visualblocks', 'codesample', 'fullscreen',
                                                 'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount'
                                             ],
                                             toolbar: 'undo redo | blocks | ' +
                                                 'bold italic forecolor | alignleft aligncenter ' +
-                                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                'alignright alignjustify | bullist numlist outdent indent codesample | ' +
                                                 'removeformat | help',
                                             content_style: 'body { font-family:Inter; font-size:16px }'
                                         }}
