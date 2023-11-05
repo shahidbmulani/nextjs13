@@ -1,7 +1,9 @@
 import Answer from '@/components/forms/Answer';
+import AllAnswers from '@/components/shared/AllAnswers';
 import Metric from '@/components/shared/Metric';
 import ParseHTML from '@/components/shared/ParseHTML';
 import RenderTag from '@/components/shared/RenderTag';
+import Votes from '@/components/shared/Votes';
 import { getQuestionById } from '@/lib/actions/question.action';
 import { getUserByID } from '@/lib/actions/user.action';
 import { formatBigNumber, getTimestamp } from '@/lib/utils';
@@ -11,7 +13,7 @@ import Link from 'next/link';
 import React from 'react'
 
 const Page = async ({ params, searchParams }) => {
-  const result = await getQuestionById({ questionId: params.id });
+  
   const { userId: clerkId } = auth();
 
   let mongoUser;
@@ -19,6 +21,8 @@ const Page = async ({ params, searchParams }) => {
   if(clerkId) {
     mongoUser = await getUserByID({ userId: clerkId });
   }
+
+  const result = await getQuestionById({ questionId: params.id });
 
   return (
     <>
@@ -29,7 +33,7 @@ const Page = async ({ params, searchParams }) => {
             <p className='paragraph-semibold text-dark300_light700'>{result.author.name}</p>
           </Link>
           <div className='flex justify-end'>
-            Voting
+            <Votes />
           </div>
         </div>
         <h2 className='h2-semibold text-dark200_light900 mt-3.5 w-full text-left'>{result.title}</h2>
@@ -68,7 +72,9 @@ const Page = async ({ params, searchParams }) => {
           <RenderTag key={tag._id} _id={tag._id} name={tag.name} showCount={false} />
         ))}
       </div>
-
+      
+      <AllAnswers questionId={result._id} authorId={JSON.stringify(mongoUser._id)} totalAnswers={result.answers.length} />
+        
       <Answer question={result.content} questionId={JSON.stringify(result._id)} authorId={JSON.stringify(mongoUser._id)} />
     </>
   )
