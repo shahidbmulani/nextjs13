@@ -25,6 +25,7 @@ import { Badge } from '../ui/badge';
 import Image from 'next/image';
 import { createQuestion } from '@/lib/actions/question.action';
 import { usePathname, useRouter } from 'next/navigation';
+import { useTheme } from '@/context/ThemeProvider';
 
 const type: any = 'create';
 
@@ -35,6 +36,7 @@ interface Props {
 
 
 const Question = ({ mongoUserId }: Props) => {
+    const { mode } = useTheme();
     const editorRef: any = useRef(null);
 
     const [isSubmitting, setisSubmitting] = useState(false);
@@ -170,7 +172,9 @@ const Question = ({ mongoUserId }: Props) => {
                                                 'bold italic forecolor | alignleft aligncenter ' +
                                                 'alignright alignjustify | bullist numlist outdent indent codesample | ' +
                                                 'removeformat | help',
-                                            content_style: 'body { font-family:Inter; font-size:16px }'
+                                            content_style: 'body { font-family:Inter; font-size:16px }',
+                                            skin: mode === 'dark' ? 'oxide-dark' : 'oxide',
+                                            content_css: mode === 'dark' ? 'dark' : 'light',
                                         }}
                                     />
                                     {/* <button onClick={() => { log() }}>Log editor content</button> */}
