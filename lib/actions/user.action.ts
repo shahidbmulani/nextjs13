@@ -274,7 +274,7 @@ export async function getUserInfo(params: GetUserByIdParams) {
             }
         ])
 
-        const criteria = [
+        const criteria:any = [
             { type: 'QUESTION_COUNT' as BadgeCriteriaType, count: totalQuestions },
             { type: 'ANSWER_COUNT' as BadgeCriteriaType, count: totalAnswers },
             { type: 'QUESTION_UPVOTES' as BadgeCriteriaType, count: questionUpvotes?.totalUpvotes || 0 },
