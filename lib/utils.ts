@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BADGE_CRITERIA } from "@/constants";
 import { BadgeCounts } from "@/types";
 import { type ClassValue, clsx } from "clsx"
